@@ -1,0 +1,17 @@
+.repo-detail-container {
+    margin-top: 50px;
+}
+.repo-detail-container h3 {
+    font-weight: 600;
+    font-size: var(--font-text-big);
+    color: #F0F6FB;
+}
+
+.section-seperator {
+    border-top: 1px solid #3d444db3;
+    font-size: var(--font-text-normal);
+}
+
+.contributor-image {
+    border-radius: 50%;
+}
