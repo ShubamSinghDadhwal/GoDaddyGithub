@@ -35,7 +35,7 @@ To solve this, I used react-virtuoso, which:
 - Is Easy to Use – Minimal setup with built-in optimizations.
 This approach significantly improved performance while keeping the implementation simple
 
-## Routing with React Router
+### Routing with React Router
 For navigation, I used React Router. It provides a clean and efficient way to handle routing, especially when dealing with dynamic repository details.
 ### Icons with React-Icons
 To keep the UI simple and lightweight, I used "react-icons" for displaying GitHub-related icons like stars, forks, and watchers. 
