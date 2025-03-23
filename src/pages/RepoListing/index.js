@@ -28,7 +28,7 @@ export const GithubRepositoryListing = () => {
     }
 
     const repositoryContainer = () => (
-        <div className="container">
+        <div className="container" role="region" aria-labelledby="repo-heading">
             <ul className="list">
                 <Virtuoso 
                     useWindowScroll
@@ -41,26 +41,29 @@ export const GithubRepositoryListing = () => {
     );
 
     const repositoryItem = (repositoryDto) => (
-        <div className="card">
-            <li>
-                <Link to={Navigation.repositoryDetail(repositoryDto.id)}>{repositoryDto.name}</Link>
-                <span className="m-l-10 badge">{repositoryDto.visibility}</span>
-                <p className="description">{repositoryDto.description}</p>
-            </li>
+        <li className="card">
+            <Link to={Navigation.repositoryDetail(repositoryDto.id)} aria-label={`View details for ${repositoryDto.name}`}>{repositoryDto.name}</Link>
+            <span className="m-l-10 badge">{repositoryDto.visibility}</span>
+            <p className="description">{repositoryDto.description}</p>
+            {/* <p className="description">{repositoryDto.stargazers_count}</p> */}
             <div className="cardRow flex align-center flex-wrap gap-10">
-                <span><GoCircle size={14} />{repositoryDto.language}</span>
-                <span><GoStar size={14} />{repositoryDto.stargazers_count}</span>
-                <span><GoRepoForked size={14} />{repositoryDto.forks_count}</span>
-                <span><GoIssueOpened size={14} />{repositoryDto.open_issues_count}</span>
-                <span><GoStopwatch size={14} />{repositoryDto.watchers_count}</span>
+                <span><GoCircle size={14} aria-hidden="true" />{repositoryDto.language}</span>
+                <span><GoStar size={14} aria-hidden="true" />{repositoryDto.stargazers_count}</span>
+                <span><GoRepoForked size={14} aria-hidden="true" />{repositoryDto.forks_count}</span>
+                <span><GoIssueOpened size={14} aria-hidden="true" />{repositoryDto.open_issues_count}</span>
+                <span><GoStopwatch size={14} aria-hidden="true" />{repositoryDto.watchers_count}</span>
                 <span>Updated on {formatDate(repositoryDto.updated_at)}</span>
             </div>
-        </div>
+        </li>
     );
 
     const renderRepositories = () => {
-        if (isRepositoryLoading) return 'Loading';
-        if (Object.keys(filteredRepositoryList).length === 0) return <NoData />
+        if (isRepositoryLoading) {
+            return <div role="status" aria-live="polite">Loading...</div>;
+        }
+        if (filteredRepositoryList.length === 0) {
+            return <div role="status" aria-live="polite"><NoData /></div>;
+        }
         return repositoryContainer();
     };
 
@@ -77,16 +80,16 @@ export const GithubRepositoryListing = () => {
     )
 
     return (
-        <section>
-            <h3 className="flex align-center">
-                <GoRepo size={16} />
+        <main id="main-content">
+            <h1 id="repo-heading" className="flex align-center">
+                <GoRepo size={16} aria-hidden="true" />
                 <span className="m-l-10">Repositories</span>
-            </h3>
+            </h1>
             {searchbar()}
             <div className="m-t-15">
                 {renderRepositories()}
             </div>
-        </section>
+        </main>
     )
 }
 
