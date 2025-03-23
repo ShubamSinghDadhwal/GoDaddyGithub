@@ -9,10 +9,10 @@ git clone https://github.com/ShubamSinghDadhwal/GoDaddyGithub.git
 cd GoDaddyGithub  
 npm install  # Using Node v18.15.0  
 
-# Start the application (run in Terminal 1)
+### Start the application (run in Terminal 1)
 npm start  
 
-# Run tests (execute in Terminal 2)
+### Run tests (execute in Terminal 2)
 npm run test
 
 ## Key Decisions & Thought Process
