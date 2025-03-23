@@ -23,7 +23,9 @@ export const GithubRepositoryListing = () => {
     }, [searchText])
     
     const filterRepositories = (searchText) => {
-        const filteredRepositoryList = (repositoryList || []).filter(repository => repository.name.includes(searchText));
+        const filteredRepositoryList = (repositoryList || []).filter(repository => 
+            repository.name.toLowerCase().includes(searchText.toLowerCase())
+        );
         setFilteredRepositoryList(filteredRepositoryList);
     }
 
@@ -42,10 +44,13 @@ export const GithubRepositoryListing = () => {
 
     const repositoryItem = (repositoryDto) => (
         <li className="card">
-            <Link to={Navigation.repositoryDetail(repositoryDto.id)} aria-label={`View details for ${repositoryDto.name}`}>{repositoryDto.name}</Link>
-            <span className="m-l-10 badge">{repositoryDto.visibility}</span>
-            <p className="description">{repositoryDto.description}</p>
-            {/* <p className="description">{repositoryDto.stargazers_count}</p> */}
+            <div className="cardRow flex align-center flex-wrap gap-10">
+                <Link to={Navigation.repositoryDetail(repositoryDto.id)} aria-label={`View details for ${repositoryDto.name}`}>{repositoryDto.name}</Link>
+                <span className="badge">{repositoryDto.visibility}</span>
+            </div>
+            <div className="cardRow flex align-center flex-wrap gap-10">
+                <p className="description">{repositoryDto.description}</p>
+            </div>
             <div className="cardRow flex align-center flex-wrap gap-10">
                 <span><GoCircle size={14} aria-hidden="true" />{repositoryDto.language}</span>
                 <span><GoStar size={14} aria-hidden="true" />{repositoryDto.stargazers_count}</span>
@@ -83,7 +88,7 @@ export const GithubRepositoryListing = () => {
         <main id="main-content">
             <h1 id="repo-heading" className="flex align-center">
                 <GoRepo size={16} aria-hidden="true" />
-                <span className="m-l-10">Repositories</span>
+                <span className="m-l-10">Repositories ({filteredRepositoryList.length || 0})</span>
             </h1>
             {searchbar()}
             <div className="m-t-15">

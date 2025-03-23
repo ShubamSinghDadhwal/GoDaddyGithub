@@ -7,9 +7,6 @@
     list-style: none;
     padding: 0px;
 }
-.container ul li {
-    word-break: break-word;
-}
 .card {
     padding: 16px;
     border-bottom: 1px solid #3d444db3;

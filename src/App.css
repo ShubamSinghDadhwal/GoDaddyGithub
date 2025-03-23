@@ -41,6 +41,7 @@ a {
   text-decoration: none;
   color: #4493f8;
   font-size: var(--font-text-big);
+  word-break: break-all;
 }
 a:hover {
   text-decoration: underline;
