@@ -7,7 +7,7 @@ The focus has been on performance, accessibility, testing, and code quality to e
 ### Installation Steps:
 git clone https://github.com/ShubamSinghDadhwal/GoDaddyGithub.git  
 cd GoDaddyGithub  
-npm install  # Using Node v18.15.0  
+npm install (using Node v18.15.0)
 
 ### Start the application (run in Terminal 1)
 npm start  
