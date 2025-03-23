@@ -27,7 +27,7 @@ Initially, all data was rendered at once on the frontend. This caused performanc
 - Inefficient Rendering – Large DOM size slowed down interactions.
 - Backend Limitations – Pagination couldn't be implemented on the backend.
 
-## Why Virtualization?
+### Why Virtualization?
 To solve this, I used react-virtuoso, which:
 - Improves Performance – Renders only visible items, reducing DOM size.
 - Enhances UX – Smooth scrolling without re-fetching data (better percieved performance).
@@ -64,7 +64,7 @@ Tests:       8 passed, 8 total
 - Custom hooks: Extracted repeated logic (such as fetching contributors) into custom hooks for better maintainability.
 - Consistent formatting: Followed best practices for readability and performance.
 
-##Final Thoughts
+## Final Thoughts
 This project was built with performance, usability, and maintainability in mind. The decision to use virtualization over pagination was a key choice to optimize handling large datasets. At the same time, accessibility and testing were prioritized to ensure a smooth and inclusive experience for all users.
 
 Looking forward to discussing further improvements and optimizations!
