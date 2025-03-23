@@ -20,14 +20,14 @@ npm run test
 For managing global state, I chose React Context instead of an external library like Redux. Since the state requirements are not overly complex, 
 Context keeps the solution lightweight and easy to maintain without unnecessary boilerplate.
 
-## Virtualization Instead of Pagination (via "react-virtuoso")
-### Problem Statement
+### Virtualization Instead of Pagination (via "react-virtuoso")
+#### Problem Statement
 Initially, all data was rendered at once on the frontend. This caused performance issues:
 - Laggy UI – Scrolling felt janky, especially on low-end devices.
 - Inefficient Rendering – Large DOM size slowed down interactions.
 - Backend Limitations – Pagination couldn't be implemented on the backend.
 
-### Why Virtualization?
+#### Why Virtualization?
 To solve this, I used react-virtuoso, which:
 - Improves Performance – Renders only visible items, reducing DOM size.
 - Enhances UX – Smooth scrolling without re-fetching data (better percieved performance).
