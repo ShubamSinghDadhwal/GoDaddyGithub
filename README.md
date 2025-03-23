@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+#GitHub Repository Explorer
+##Introduction
+This project is a GitHub Repository Explorer that allows users to browse and view detailed information about repositories. The focus has been on performance, accessibility, testing, and code quality to ensure a seamless user experience.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##Getting Started
+#Installation
+git clone https://github.com/ShubamSinghDadhwal/GoDaddyGithub.git
+npm install
+npm start
+npm run test -> for starting tests
 
-## Available Scripts
+##Key Decisions & Thought Process
+State Management with React Context
+For managing global state, I chose React Context instead of an external library like Redux. Since the state requirements are not overly complex, Context keeps the solution lightweight and easy to maintain without unnecessary boilerplate.
 
-In the project directory, you can run:
+##Virtualization Instead of Pagination
+Handling large lists efficiently was a priority, so I opted for virtualization instead of traditional pagination.
 
-### `npm start`
+###Why?
+Performance boost: Only renders items currently visible on the screen, reducing the DOM size significantly.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Smooth scrolling: Unlike pagination, there’s no need for page reloads or additional data fetching on navigation.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+###Trade-offs:
+Memory consumption: Virtualization can use more memory compared to pagination.
 
-### `npm test`
+Implementation complexity: Slightly more complex than pagination but worth it for performance gains.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+###Routing with React Router
+For navigation, I used React Router. It provides a clean and efficient way to handle routing, especially when dealing with dynamic repository details.
 
-### `npm run build`
+###Icons with React-Icons
+To keep the UI simple and lightweight, I used React-Icons for displaying GitHub-related icons like stars, forks, and watchers. This avoids importing heavy image assets while maintaining a clean UI.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##Accessibility Improvements
+Making the application accessible was a key focus. Some improvements include:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Proper ARIA attributes to ensure screen readers interpret elements correctly.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Keyboard navigation support to allow users to navigate without a mouse.
 
-### `npm run eject`
+Screen reader-friendly content, such as adding aria-live attributes where necessary.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+These small changes enhance usability for all users.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+##Testing Strategy
+Testing was done using Jest & React Testing Library, focusing on:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Ensuring repository details render correctly.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Checking that accessibility features work as expected.
 
-## Learn More
+Validating that all interactive elements (buttons, links) function properly.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+API calls were mocked to simulate different scenarios and ensure the UI behaves correctly under various conditions.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##Code Quality Best Practices
+Modular components: Kept components small and reusable to maintain clarity and ease of debugging.
 
-### Code Splitting
+Custom hooks: Extracted repeated logic (such as fetching contributors) into custom hooks for better maintainability.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Consistent formatting: Followed best practices for readability and performance.
 
-### Analyzing the Bundle Size
+##Final Thoughts
+This project was built with performance, usability, and maintainability in mind. The decision to use virtualization over pagination was a key choice to optimize handling large datasets. At the same time, accessibility and testing were prioritized to ensure a smooth and inclusive experience for all users.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Looking forward to discussing further improvements and optimizations!
