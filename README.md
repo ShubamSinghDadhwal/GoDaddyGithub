@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# GoDaddy GitHub Repository Explorer
+## Introduction
+This project is a GitHub Repository Explorer that allows users to browse and view detailed information about repositories. 
+The focus has been on performance, accessibility, testing, and code quality to ensure a seamless user experience.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Getting Started
+### Installation Steps:
+git clone https://github.com/ShubamSinghDadhwal/GoDaddyGithub.git  
+cd GoDaddyGithub  
+npm install (using Node v18.15.0)
 
-## Available Scripts
+### Start the application (run in Terminal 1)
+npm start  
 
-In the project directory, you can run:
+### Run tests (execute in Terminal 2)
+npm run test
 
-### `npm start`
+## Key Decisions & Thought Process
+### State Management with React Context
+For managing global state, I chose React Context instead of an external library like Redux. Since the state requirements are not overly complex, 
+Context keeps the solution lightweight and easy to maintain without unnecessary boilerplate.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Virtualization Instead of Pagination (via "react-virtuoso")
+#### Problem Statement
+Initially, all data was rendered at once on the frontend. This caused performance issues:
+- Laggy UI – Scrolling felt janky, especially on low-end devices.
+- Inefficient Rendering – Large DOM size slowed down interactions.
+- Backend Limitations – Pagination couldn't be implemented on the backend.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+#### Why Virtualization?
+To solve this, I used react-virtuoso, which:
+- Improves Performance – Renders only visible items, reducing DOM size.
+- Enhances UX – Smooth scrolling without re-fetching data (better percieved performance).
+- Is Well-Maintained & have a bundle size of 17.9 kB (minified + gzipped size)
+- Is Easy to Use – Minimal setup with built-in optimizations.
+This approach significantly improved performance while keeping the implementation simple
 
-### `npm test`
+### Routing with React Router
+For navigation, I used React Router. It provides a clean and efficient way to handle routing, especially when dealing with dynamic repository details.
+### Icons with React-Icons
+To keep the UI simple and lightweight, I used "react-icons" for displaying GitHub-related icons like stars, forks, and watchers. 
+This avoids importing heavy image assets while maintaining a clean UI.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Accessibility Improvements
+Making the application accessible was a key focus. Some improvements include:
+- Proper ARIA attributes to ensure screen readers interpret elements correctly.
+- Keyboard navigation support to allow users to navigate without a mouse.
+- Screen reader-friendly content, such as adding aria-live attributes where necessary.
+These small changes enhance usability for all users.
 
-### `npm run build`
+## Testing Strategy
+Testing was done using Jest & React Testing Library, focusing on:
+- Ensuring repository details render correctly.
+- Checking that accessibility features work as expected.
+- Validating that all interactive elements (buttons, links) function properly.
+API calls were mocked to simulate different scenarios and ensure the UI behaves correctly under various conditions.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Test Results:
+Test Suites: 2 passed, 2 total  
+Tests:       8 passed, 8 total
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Code Quality Best Practices
+- Modular components: Kept components small and reusable to maintain clarity and ease of debugging.
+- Custom hooks: Extracted repeated logic (such as fetching contributors) into custom hooks for better maintainability.
+- Consistent formatting: Followed best practices for readability and performance.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Final Thoughts
+This project was built with performance, usability, and maintainability in mind. The decision to use virtualization over pagination was a key choice to optimize handling large datasets. At the same time, accessibility and testing were prioritized to ensure a smooth and inclusive experience for all users.
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Looking forward to discussing further improvements and optimizations!
